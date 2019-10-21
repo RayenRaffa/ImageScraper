@@ -1,0 +1,11 @@
+q|Search query string
+bih
+biw
+dpr
+sa
+source
+sxsrf
+tbm|=isch : specifies image search
+tbs|Image filters, when tbm=isch is pecified|"Labeled for reuse"=sur:fc|image size isz=(l,m or s)
+ved
+ijn| defines the page number (int)

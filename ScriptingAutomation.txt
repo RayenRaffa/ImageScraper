@@ -1,0 +1,48 @@
+images PCB + urls 
+REQUIREMENTS :
+	>20k photos
+	Filters :
+		"Labeled for reuse" _ google image search
+		"Free to share and use commercially" _ Bing image search
+		"Free to share and use commercially" _ Yahoo image search
+	Keywords :
+		PCB
+		PCBA
+		printed circuit board
+		electronic bpard
+		motherboard
+		control board
+		PCI express card
+	Unique MD5? hash or URL
+	Formats :
+		JPEG
+		PNG
+	DONE! Additional Info : ( seperate file with the name )
+		URL
+		EXIF information if available
+	NO licensed images
+	5pics/sec ( Rule of thumb only )
+	Provide any licensed data sets' info
+	Size :
+		>200H*>200W
+	Bright machine verified for diversisty
+	Diversity requirements :
+		$(include) PCB with all components assembled
+		$ PCB with no components
+		$ non-regular-shape PCB
+		$ PCB with 45° view on z-axis
+		$ PCB with ~0° view on z-axis
+		$ PCB with roation on x,y,z-axises
+		$ bottom view PCB
+		$ blue PCB on wooden surface
+		$ PCB for HVAC product
+		$ multiple, NON-overlapping PCBs in same image
+		!$ broken PCB
+		!$ overlapping PCBs
+		!$ Non-rigid PCB
+		!$ PCB not fully visible
+
+Test case 1 : 
+Comparing two links to determine the selector for labels
+https://www.google.com/search?q=pcb&sxsrf=ACYBGNQQVzDNsZH9akbnsyBTWVQEWim5Tw:1571510243483&source=lnms&tbm=isch&sa=X&ved=0ahUKEwifhsvu-6jlAhUqx4UKHYXVB8QQ_AUIESgB&biw=1871&bih=939
+https://www.google.com/search?q=pcb&tbm=isch&sxsrf=ACYBGNQN63mFU9ur1woT3r7Xaax6siHy4g:1571510258281&source=lnt&tbs=sur:fc&sa=X&ved=0ahUKEwjvqdL1-6jlAhUOxYUKHdZ5DAAQpwUIIA&biw=1871&bih=939&dpr=1
