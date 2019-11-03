@@ -27,7 +27,7 @@ def fetch_image_urls(query:str, max_links_to_fetch:int, wd:webdriver, sleep_betw
         time.sleep(sleep_between_interactions)
 
     # build the google query
-    search_url = "https://www.google.com/search?safe=off&site=&tbm=isch&source=hp&q={q}&oq={q}&tbs=sur:fc"
+    search_url = "https://www.google.com/search?safe=off&site=&tbm=isch&source=hp&q={q}&oq={q}&tbs=sur:fc,isz:l"
 
     # load the page
     wd.get(search_url.format(q=query))
@@ -86,13 +86,13 @@ def persist_image(folder_path:str,url:str,with_exif:int,wo_exif:int,abnormal_exi
     # Checking the file exenstion
     split_url = url.split('.')
     img_extension = split_url[len(split_url)-1]
-    print(img_extension)
+    # print(img_extension)
     try:
         image_file = io.BytesIO(image_content)
         with Image.open(image_file).convert('RGB') as image:
             # Check if image size is more than 200*200 pixels
             width, height = image.size
-            if width > 200 and height > 200:
+            if width > 1920 and height > 1080:
 
                 #Extracting EXIF data
                 try:
@@ -140,20 +140,22 @@ def persist_image(folder_path:str,url:str,with_exif:int,wo_exif:int,abnormal_exi
         print(f"ERROR - Could not save {url} - {e}")
     return with_exif, wo_exif, abnormal_exif, skipped_imgs, ttl_dwnlds
 
-def search_and_download(search_term:str,driver_path:str,target_path='./PCBimages',number_images=5):
+def search_and_download(search_term:str,driver_path:str,target_path=None,number_images=10):
+    if not target_path:
+        target_path = './Results_'+search_term
     target_folder = os.path.join(target_path,'_'.join(search_term.lower().split(' ')))
 
     if not os.path.exists(target_folder):
         os.makedirs(target_folder)
     
 
-    chrome_options = Options()
+    # chrome_options = Options()
     #chrome_options.add_argument("--disable-extensions")
     #chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument('window-size=1920x1080')
-    chrome_options.add_argument("--headless")
+    #chrome_options.add_argument('window-size=1920x1080')
+    #chrome_options.add_argument("--headless")
 
-    with webdriver.Chrome(executable_path=driver_path,options=chrome_options) as wd:
+    with webdriver.Chrome(executable_path=driver_path) as wd:
         res = fetch_image_urls(search_term, number_images, wd=wd, sleep_between_interactions=0.5)
 
 
@@ -179,5 +181,5 @@ def search_and_download(search_term:str,driver_path:str,target_path='./PCBimages
 
 
 
-search_term= 'PCB'
+search_term= 'shanghaibynight'
 search_and_download(search_term=search_term, driver_path=DRIVER_PATH)
